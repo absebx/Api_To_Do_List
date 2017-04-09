@@ -9,11 +9,11 @@ namespace Datos
 {
     public class DataUsuarios
     {
-        //obtener todos los usuarios en un arreglo de usuarios del modelo
-        public Usuario[] getAll()
+        //obtener todos los usuarios en un arreglo de users del modelo
+        public User[] getAll()
         {
-            //crear lista de usuarios
-            List<Usuario> usuarios = new List<Usuario>();
+            //crear lista de users del modelo
+            List<User> usuarios = new List<User>();
             using (var db = new ToDoListContext())
             {
                 var query = from u in db.USER
@@ -22,7 +22,7 @@ namespace Datos
                 //ingresar resultados de la query en la lista como objetos usuario
                 foreach (var item in query)
                 {
-                    Usuario usuario = new Usuario();
+                    User usuario = new User();
                     usuario.Id = item.id;
                     usuario.Name = item.name;
                     usuarios.Add(usuario);

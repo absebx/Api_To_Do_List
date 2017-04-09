@@ -13,7 +13,7 @@ namespace Datos
         public User[] getAll()
         {
             //crear lista de users del modelo
-            List<User> usuarios = new List<User>();
+            List<User> users = new List<User>();
             using (var db = new ToDoListContext())
             {
                 var query = from u in db.USER
@@ -22,13 +22,13 @@ namespace Datos
                 //ingresar resultados de la query en la lista como objetos usuario
                 foreach (var item in query)
                 {
-                    User usuario = new User();
-                    usuario.Id = item.id;
-                    usuario.Name = item.name;
-                    usuarios.Add(usuario);
+                    User user = new User();
+                    user.Id = item.id;
+                    user.Name = item.name;
+                    users.Add(user);
                 }
                 //se retorna la lista en formato de array
-                return usuarios.ToArray();
+                return users.ToArray();
             }
         }
     }

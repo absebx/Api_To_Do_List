@@ -1,0 +1,5 @@
+E:\proyectos\koe\Api_To_Do_List\Modelo\bin\Debug\Modelo.dll
+E:\proyectos\koe\Api_To_Do_List\Modelo\bin\Debug\Modelo.pdb
+E:\proyectos\koe\Api_To_Do_List\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+E:\proyectos\koe\Api_To_Do_List\Modelo\obj\Debug\Modelo.dll
+E:\proyectos\koe\Api_To_Do_List\Modelo\obj\Debug\Modelo.pdb

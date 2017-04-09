@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TO_DO_LISTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BOARD">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="REL_TICKET_HAS_STATUS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id_ticket" Type="bigint" Nullable="false" />
+    <Property Name="id_status" Type="bigint" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STATUS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="color" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TICKET">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nchar" MaxLength="1000" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="estimated_time" Type="int" Nullable="false" />
+    <Property Name="board_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BOARD_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="BOARD" Type="Self.BOARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BOARD">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TICKET_HAS_STATUS_STATUS">
+    <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+    <End Role="REL_TICKET_HAS_STATUS" Type="Self.REL_TICKET_HAS_STATUS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="REL_TICKET_HAS_STATUS">
+        <PropertyRef Name="id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TICKET_HAS_STATUS_TICKET">
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="1" />
+    <End Role="REL_TICKET_HAS_STATUS" Type="Self.REL_TICKET_HAS_STATUS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TICKET">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="REL_TICKET_HAS_STATUS">
+        <PropertyRef Name="id_ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TICKET_BOARD">
+    <End Role="BOARD" Type="Self.BOARD" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOARD">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="board_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TO_DO_LISTModelStoreContainer">
+    <EntitySet Name="BOARD" EntityType="Self.BOARD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REL_TICKET_HAS_STATUS" EntityType="Self.REL_TICKET_HAS_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TICKET" EntityType="Self.TICKET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BOARD_USER" Association="Self.FK_BOARD_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="BOARD" EntitySet="BOARD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TICKET_HAS_STATUS_STATUS" Association="Self.FK_REL_TICKET_HAS_STATUS_STATUS">
+      <End Role="STATUS" EntitySet="STATUS" />
+      <End Role="REL_TICKET_HAS_STATUS" EntitySet="REL_TICKET_HAS_STATUS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TICKET_HAS_STATUS_TICKET" Association="Self.FK_REL_TICKET_HAS_STATUS_TICKET">
+      <End Role="TICKET" EntitySet="TICKET" />
+      <End Role="REL_TICKET_HAS_STATUS" EntitySet="REL_TICKET_HAS_STATUS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TICKET_BOARD" Association="Self.FK_TICKET_BOARD">
+      <End Role="BOARD" EntitySet="BOARD" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

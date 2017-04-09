@@ -1,0 +1,12 @@
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\Datos.dll.config
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\Datos.dll
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\Datos.pdb
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\EntityFramework.dll
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\EntityFramework.SqlServer.dll
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\Modelo.dll
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\Modelo.pdb
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\EntityFramework.xml
+E:\proyectos\koe\Api_To_Do_List\Datos\bin\Debug\EntityFramework.SqlServer.xml
+E:\proyectos\koe\Api_To_Do_List\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+E:\proyectos\koe\Api_To_Do_List\Datos\obj\Debug\Datos.dll
+E:\proyectos\koe\Api_To_Do_List\Datos\obj\Debug\Datos.pdb

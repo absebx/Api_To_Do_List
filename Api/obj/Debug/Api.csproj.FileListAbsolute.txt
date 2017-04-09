@@ -50,3 +50,6 @@ E:\proyectos\koe\Api_To_Do_List\Api\bin\es\System.Web.Http.WebHost.resources.dll
 E:\proyectos\koe\Api_To_Do_List\Api\obj\Debug\Api.csprojResolveAssemblyReference.cache
 E:\proyectos\koe\Api_To_Do_List\Api\obj\Debug\Api.dll
 E:\proyectos\koe\Api_To_Do_List\Api\obj\Debug\Api.pdb
+E:\proyectos\koe\Api_To_Do_List\Api\bin\System.Web.Cors.dll
+E:\proyectos\koe\Api_To_Do_List\Api\bin\System.Web.Http.Cors.dll
+E:\proyectos\koe\Api_To_Do_List\Api\bin\System.Web.Http.Cors.xml

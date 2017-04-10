@@ -14,15 +14,17 @@ namespace Api.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
-        //instancia de Datausers en datos, los obtiene por entoty
+        //instancia de Datausers en datos, los obtiene por entity
         DataUsuarios dataUsers = new DataUsuarios();
 
         //obtener todos los usuarios api/users
+        //get api/users
         public IEnumerable<User> getAllUsers()
         {
             return dataUsers.getAll();
         }
         //Todas las notas de un usuario api/user/id
+        //get api/user/id
         public IHttpActionResult getUser(int id)
         {
             //pasar todos los usuarios en un array

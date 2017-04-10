@@ -9,7 +9,7 @@ namespace Modelo
     public class Board
     {
         public long Id { get; set; }
-        public long Name { get; set; }
-        public long User_id { get; set; }
+        public String Name { get; set; }
+        public Int64 User_id { get; set; }
     }
 }

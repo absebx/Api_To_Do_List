@@ -24,12 +24,12 @@ namespace Api.Controllers
         }
         //Todas las notas de un usuario api/user/id
         //Get: api/user/{id}
-        public IHttpActionResult getBoard(int id)
+        public IHttpActionResult getBoardByUser(int id)
         {
-            //pasar todos los usuarios en un array
+            //pasar todos los boards en un array
             Board[] boards = dataBoards.getAll();
-            //buscar el usuario seleccionado
-            var board = boards.FirstOrDefault((u) => u.Id == id);
+            //buscar el board seleccionado
+            var board = boards.FirstOrDefault((u) => u.User_id == id);
             if (board == null)
             {
                 return NotFound();

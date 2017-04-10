@@ -14,10 +14,12 @@ namespace Api.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BoardController : ApiController
     {
+        //instancia de dataBoard
+        DataBoard dataBoard = new DataBoard();
         // GET: api/Board
-        public IEnumerable<string> Get()
+        public IEnumerable<Board> GetAllBoards()
         {
-            return new string[] { "value1", "value2" };
+            return dataBoard.getAll();
         }
 
         // GET: api/Board/5

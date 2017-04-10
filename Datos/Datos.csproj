@@ -54,6 +54,7 @@
     <Compile Include="BOARD.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBoard.cs" />
     <Compile Include="DataUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REL_TICKET_HAS_STATUS.cs">

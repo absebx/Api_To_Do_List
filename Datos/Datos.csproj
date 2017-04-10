@@ -55,6 +55,7 @@
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBoard.cs" />
+    <Compile Include="DataTicketHasStatus.cs" />
     <Compile Include="DataTickets.cs" />
     <Compile Include="DataUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

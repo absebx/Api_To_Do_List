@@ -11,6 +11,7 @@ using Datos;
 
 namespace Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TicketsController : ApiController
     {
         DataTickets dataTickets = new DataTickets();
@@ -20,12 +21,13 @@ namespace Api.Controllers
         {
             return dataTickets.getAllTickets();
         }
+        //obtener todos los tickets de un board
         //get: api/tickets/{id_board}
         public IHttpActionResult getTicketByBoard(int id)
         {
-            //pasar todos los usuarios en un array
+            //pasar todos los tickets en un array
             Ticket[] tickets = dataTickets.getAllTickets();
-            //buscar el usuario seleccionado
+            //buscar los tickets en el board
             var ticket = tickets.Where((t) => t.BoardID == id);
             if (ticket == null)
             {

@@ -17,13 +17,13 @@ namespace Api.Controllers
         DataBoard dataBoards = new DataBoard();
 
         //obtener todos los usuarios
-        //Get: api/users
-        public IEnumerable<Board> getAllUsers()
+        //Get: api/boards
+        public IEnumerable<Board> getAllBoards()
         {
             return dataBoards.getAll();
         }
         //Todas las notas de un usuario api/user/id
-        //Get: api/user/{id}
+        //Get: api/board/{user_id}
         public IHttpActionResult getBoardByUser(int id)
         {
             //pasar todos los boards en un array

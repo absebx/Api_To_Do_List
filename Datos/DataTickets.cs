@@ -30,5 +30,23 @@ namespace Datos
                 return tickets.ToArray();
             }
         }
+
+        public void addTicket(Ticket ticket)
+        {
+            using (var db = new ToDoListContext())
+            {
+                var newTicket = new TICKET
+                {
+                    title = ticket.Title,
+                    description = ticket.Description,
+                    date = ticket.Date,
+                    estimated_time = ticket.EstimatedTime,
+                    board_id = ticket.BoardID
+                };
+
+                db.TICKET.Add(newTicket);
+                db.SaveChanges();
+            }
+        }
     }
 }

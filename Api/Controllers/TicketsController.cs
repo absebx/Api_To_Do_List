@@ -35,5 +35,13 @@ namespace Api.Controllers
             }
             return Ok(ticket);
         }
+
+        //post una nueva tarjeta
+        //post: api/tickets
+        public Ticket postTicket(Ticket ticket)
+        {
+            return ticket;
+        }
+
     }
 }

@@ -41,7 +41,7 @@ namespace Api.Controllers
         [HttpPost]
         public Ticket postTicket(Ticket ticket)
         {
-
+            dataTickets.addTicket(ticket);
             return ticket;
         }
 

@@ -38,6 +38,7 @@ namespace Api.Controllers
 
         //post una nueva tarjeta
         //post: api/tickets
+        [HttpPost]
         public Ticket postTicket(Ticket ticket)
         {
             return ticket;

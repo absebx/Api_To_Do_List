@@ -32,6 +32,28 @@ namespace Datos
             }
         }
 
+        public long addTicket(Ticket ticket)
+        {
+            long id=0;
+            using (var db = new ToDoListContext())
+            {
+                var newTicket = new TICKET
+                {
+                    title = ticket.Title,
+                    description = ticket.Description,
+                    date = ticket.Date,
+                    estimated_time = ticket.EstimatedTime,
+                    board_id = ticket.BoardID
+                };
+
+                db.TICKET.Add(newTicket);
+                db.SaveChanges();
+
+                id = newTicket.id;
+            }
+            return id;
+        }
+
         public CompleteTicket[] getCompleteTickets()
         {
             List<CompleteTicket> tickets = new List<CompleteTicket>();
@@ -57,29 +79,6 @@ namespace Datos
 
                 return tickets.ToArray();
             }
-        }
-
-
-        public long addTicket(Ticket ticket)
-        {
-            long id=0;
-            using (var db = new ToDoListContext())
-            {
-                var newTicket = new TICKET
-                {
-                    title = ticket.Title,
-                    description = ticket.Description,
-                    date = ticket.Date,
-                    estimated_time = ticket.EstimatedTime,
-                    board_id = ticket.BoardID
-                };
-
-                db.TICKET.Add(newTicket);
-                db.SaveChanges();
-
-                id = newTicket.id;
-            }
-            return id;
         }
     }
 }

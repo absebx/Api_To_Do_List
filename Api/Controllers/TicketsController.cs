@@ -19,17 +19,19 @@ namespace Api.Controllers
         DataTickets dataTickets = new DataTickets();
         //obtener controlador de datos para relaciones
         DataTicketHasStatus dataRelations= new DataTicketHasStatus();
+
+        //obtener todos los tickets completos
         //get: api/tickets
-        public IEnumerable<Ticket> getAllTickets()
+        public IEnumerable<CompleteTicket> getAllTickets()
         {
-            return dataTickets.getAllTickets();
+            return dataTickets.getCompleteTickets();
         }
 
-        /*Obtener tickets por id
+        /*Obtener tickets completos por id
          get: api/tickets/{id_ticket}*/
         public IHttpActionResult getTicket(int id)
         {
-            Ticket[] tickets = dataTickets.getAllTickets();
+            CompleteTicket[] tickets = dataTickets.getCompleteTickets();
             var ticket = tickets.FirstOrDefault((t) => t.Id == id);
             if (ticket == null)
             {
@@ -38,14 +40,14 @@ namespace Api.Controllers
             return Ok(ticket);
         }
 
-        /*obtener todos los tickets de un board
+        /*obtener todos los tickets completos de un board
         get: api/tickets/byBoard/{id_board}*/
         [HttpGet]
         [Route("api/tickets/byboard/{id}")]
         public IHttpActionResult getTicketByBoard(int id)
         {
             //pasar todos los tickets en un array
-            Ticket[] tickets = dataTickets.getAllTickets();
+            CompleteTicket[] tickets = dataTickets.getCompleteTickets();
             //buscar los tickets en el board
             var ticket = tickets.Where((t) => t.BoardID == id);
             if (ticket == null)
@@ -56,7 +58,8 @@ namespace Api.Controllers
         }
 
 
-        /*post una nueva tarjeta
+        /*post un nuevo ticket->
+         * un nuevo ticket no necesita estar completo
         post: api/tickets*/
         [HttpPost]
         public IHttpActionResult postTicket(Ticket ticket)

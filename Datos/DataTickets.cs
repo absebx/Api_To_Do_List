@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
-
+using System.Diagnostics;
 namespace Datos
 {
     public class DataTickets
@@ -25,6 +25,7 @@ namespace Datos
                     ticket.Description = item.description;
                     ticket.Date = item.date;
                     ticket.EstimatedTime = item.estimated_time;
+                    ticket.BoardID = item.board_id;
                     tickets.Add(ticket);
                 }
                 return tickets.ToArray();

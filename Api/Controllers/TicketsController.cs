@@ -25,6 +25,19 @@ namespace Api.Controllers
             return dataTickets.getAllTickets();
         }
 
+        /*Obtener tickets por id
+         get: api/tickets/{id_ticket}*/
+        public IHttpActionResult getTicket(int id)
+        {
+            Ticket[] tickets = dataTickets.getAllTickets();
+            var ticket = tickets.FirstOrDefault((t) => t.Id == id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+            return Ok(ticket);
+        }
+
         /*obtener todos los tickets de un board
         get: api/tickets/byBoard/{id_board}*/
         [HttpGet]
@@ -42,18 +55,6 @@ namespace Api.Controllers
             return Ok(ticket);
         }
 
-        /*Obtener tickets por id
-         get: api/tickets/{id_ticket}*/
-         public IHttpActionResult getTicket(int id)
-        {
-            Ticket[] tickets = dataTickets.getAllTickets();
-            var ticket = tickets.FirstOrDefault((t) => t.Id == id);
-            if(ticket == null)
-            {
-                return NotFound();
-            }
-            return Ok(ticket);
-        }
 
         /*post una nueva tarjeta
         post: api/tickets*/

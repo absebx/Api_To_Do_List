@@ -22,8 +22,26 @@ namespace Api.Controllers
         {
             return dataBoards.getAll();
         }
+
+        //buscar board por id
+        //Get: api/board/{board_id}
+        public IHttpActionResult getBoard(int id)
+        {
+            Board[] boards = dataBoards.getAll();
+            //buscar board seleccionado
+            var board = boards.FirstOrDefault((b) => b.Id == id);
+            if(board == null)
+            {
+                return NotFound();
+            }
+            return Ok(board);
+        }
+
+
         //Todas las notas de un usuario api/user/id
         //Get: api/board/{user_id}
+        [HttpGet]
+        [Route("api/boards/byuser/{id}")]
         public IHttpActionResult getBoardByUser(int id)
         {
             //pasar todos los boards en un array

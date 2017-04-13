@@ -30,8 +30,9 @@ namespace Datos
             return relations.ToArray();
         }
         //guardar relation  
-        public void addRelation(RelTicketHasStatus relation)
+        public long addRelation(RelTicketHasStatus relation)
         {
+            long newId=0;
             using (var db=new ToDoListContext())
             {
                 var newRelation = new REL_TICKET_HAS_STATUS
@@ -43,7 +44,10 @@ namespace Datos
 
                 db.REL_TICKET_HAS_STATUS.Add(newRelation);
                 db.SaveChanges();
+                newId = newRelation.id;
             }
+
+            return newId;
         }
     }
 }

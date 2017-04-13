@@ -8,13 +8,17 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Modelo;
 using Datos;
+using System.Diagnostics;
 
 namespace Api.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TicketsController : ApiController
     {
+        //obtener controlador de datos para ticket
         DataTickets dataTickets = new DataTickets();
+        //obtener controlador de datos para relaciones
+        DataTicketHasStatus dataRelations= new DataTicketHasStatus();
         //get: api/tickets
         public IEnumerable<Ticket> getAllTickets()
         {
@@ -40,16 +44,23 @@ namespace Api.Controllers
         [HttpPost]
         public IHttpActionResult postTicket(Ticket ticket)
         {
-            //ingresar nuevo ticket
+            //ingresar nuevo ticket y obtener id
             long newTicketId = dataTickets.addTicket(ticket);
             
             //corroborar ingresado
             if (newTicketId != 0)
             {
-                return Ok(ticket);
+                //ingresar nueva relacion, para dejar ticket como pendiente
+                RelTicketHasStatus relation= new RelTicketHasStatus();
+                relation.idStatus = 1; //1=> pendiente
+                relation.IdTicket = newTicketId;
+                relation.Date = ticket.Date;
+                //ingresar relacion y corroborar que se ingresa correctamente
+                if (dataRelations.addRelation(relation) != 0)
+                {
+                    return Ok(ticket);
+                }
             }
-            //ingresar nuevo ticketHasStatus dejandolo como pendiente
-
             return NotFound();
         }
 

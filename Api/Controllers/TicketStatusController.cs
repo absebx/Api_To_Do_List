@@ -15,15 +15,33 @@ namespace Api.Controllers
     public class TicketStatusController : ApiController
     {
         DataTicketHasStatus dataRelation = new DataTicketHasStatus();
-
-        //api/ticketstatus
+        /*obtener todas las relaciones
+        get:api/ticketstatus*/
         public IEnumerable<RelTicketHasStatus> getAllRelations()
         {
             return dataRelation.getAll();
         }
 
-        //api/ticketstatus/{id_ticket}
-        public IHttpActionResult getTicketByBoard(int id)
+        //obtener relacion por id
+        //get: api/ticketstatus/{id}
+        public IHttpActionResult getRelation(int id)
+        {
+            //pasar todos las relaciones en un array
+            RelTicketHasStatus[] relations = dataRelation.getAll();
+            //buscar las relacion con el ticket
+            var relation = relations.FirstOrDefault((r) => r.Id == id);
+            if (relation == null)
+            {
+                return NotFound();
+            }
+            return Ok(relation);
+        }
+
+        //obtener la relacion que pertenesca a un ticket
+        //api/ticketstatus/byticket/{id_ticket}
+        [HttpGet]
+        [Route("api/ticketstatus/byticket/{id}")]
+        public IHttpActionResult getRelationByTicket(int id)
         {
             //pasar todos las relaciones en un array
             RelTicketHasStatus[] relations = dataRelation.getAll();

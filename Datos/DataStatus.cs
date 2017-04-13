@@ -25,6 +25,8 @@ namespace Datos
                     status.Id = item.id;
                     status.Name = item.name;
                     status.Color = item.color;
+                    //agregar status recien creado a la lista
+                    allStatus.Add(status);
                 }
                 return allStatus.ToArray();
             }

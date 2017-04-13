@@ -29,7 +29,7 @@ namespace Datos
             }
             return relations.ToArray();
         }
-        //guardar relation
+        //guardar relation  
         public void addRelation(RelTicketHasStatus relation)
         {
             using (var db=new ToDoListContext())

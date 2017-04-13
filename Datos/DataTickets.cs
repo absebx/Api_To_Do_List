@@ -32,8 +32,9 @@ namespace Datos
             }
         }
 
-        public void addTicket(Ticket ticket)
+        public long addTicket(Ticket ticket)
         {
+            long id=0;
             using (var db = new ToDoListContext())
             {
                 var newTicket = new TICKET
@@ -47,7 +48,10 @@ namespace Datos
 
                 db.TICKET.Add(newTicket);
                 db.SaveChanges();
+
+                id = newTicket.id;
             }
+            return id;
         }
     }
 }

@@ -38,10 +38,19 @@ namespace Api.Controllers
         /*post una nueva tarjeta
         post: api/tickets*/
         [HttpPost]
-        public Ticket postTicket(Ticket ticket)
+        public IHttpActionResult postTicket(Ticket ticket)
         {
-            dataTickets.addTicket(ticket);
-            return ticket;
+            //ingresar nuevo ticket
+            long newTicketId = dataTickets.addTicket(ticket);
+            
+            //corroborar ingresado
+            if (newTicketId != 0)
+            {
+                return Ok(ticket);
+            }
+            //ingresar nuevo ticketHasStatus dejandolo como pendiente
+
+            return NotFound();
         }
 
     }

@@ -15,14 +15,13 @@ namespace Api.Controllers
     public class TicketsController : ApiController
     {
         DataTickets dataTickets = new DataTickets();
-
         //get: api/tickets
         public IEnumerable<Ticket> getAllTickets()
         {
             return dataTickets.getAllTickets();
         }
-        //obtener todos los tickets de un board
-        //get: api/tickets/{id_board}
+        /*obtener todos los tickets de un board
+        get: api/tickets/{id_board}*/
         public IHttpActionResult getTicketByBoard(int id)
         {
             //pasar todos los tickets en un array
@@ -36,8 +35,8 @@ namespace Api.Controllers
             return Ok(ticket);
         }
 
-        //post una nueva tarjeta
-        //post: api/tickets
+        /*post una nueva tarjeta
+        post: api/tickets*/
         [HttpPost]
         public Ticket postTicket(Ticket ticket)
         {

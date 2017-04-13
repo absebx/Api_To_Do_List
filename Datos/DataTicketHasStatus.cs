@@ -28,7 +28,22 @@ namespace Datos
                 }
             }
             return relations.ToArray();
+        }
+        //guardar relation
+        public void addRelation(RelTicketHasStatus relation)
+        {
+            using (var db=new ToDoListContext())
+            {
+                var newRelation = new REL_TICKET_HAS_STATUS
+                {
+                    id_ticket = relation.IdTicket,
+                    id_status = relation.idStatus,
+                    date = relation.Date
+                };
 
+                db.REL_TICKET_HAS_STATUS.Add(newRelation);
+                db.SaveChanges();
+            }
         }
     }
 }

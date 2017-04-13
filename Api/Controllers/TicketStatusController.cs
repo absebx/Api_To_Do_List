@@ -28,7 +28,7 @@ namespace Api.Controllers
         {
             //pasar todos las relaciones en un array
             RelTicketHasStatus[] relations = dataRelation.getAll();
-            //buscar las relacion con el ticket
+            //buscar las relacion con el id
             var relation = relations.FirstOrDefault((r) => r.Id == id);
             if (relation == null)
             {

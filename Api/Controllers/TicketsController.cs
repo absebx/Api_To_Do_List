@@ -24,8 +24,11 @@ namespace Api.Controllers
         {
             return dataTickets.getAllTickets();
         }
+
         /*obtener todos los tickets de un board
-        get: api/tickets/{id_board}*/
+        get: api/tickets/byBoard/{id_board}*/
+        [HttpGet]
+        [Route("api/tickets/byboard/{id}")]
         public IHttpActionResult getTicketByBoard(int id)
         {
             //pasar todos los tickets en un array
@@ -33,6 +36,19 @@ namespace Api.Controllers
             //buscar los tickets en el board
             var ticket = tickets.Where((t) => t.BoardID == id);
             if (ticket == null)
+            {
+                return NotFound();
+            }
+            return Ok(ticket);
+        }
+
+        /*Obtener tickets por id
+         get: api/tickets/{id_ticket}*/
+         public IHttpActionResult getTicket(int id)
+        {
+            Ticket[] tickets = dataTickets.getAllTickets();
+            var ticket = tickets.FirstOrDefault((t) => t.Id == id);
+            if(ticket == null)
             {
                 return NotFound();
             }

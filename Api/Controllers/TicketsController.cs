@@ -98,7 +98,7 @@ namespace Api.Controllers
 
         //modificar ticket
         //put: api/ticket/{id}
-        public void updateTicket(int id, CompleteTicket ticket)
+        public void putTicket(int id, CompleteTicket ticket)
         {
             dataTickets.updateTicket(ticket);
         }

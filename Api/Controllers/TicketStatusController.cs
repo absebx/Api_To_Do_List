@@ -38,7 +38,7 @@ namespace Api.Controllers
         }
 
         //obtener la relacion que pertenesca a un ticket
-        //api/ticketstatus/byticket/{id_ticket}
+        //get: api/ticketstatus/byticket/{id_ticket}
         [HttpGet]
         [Route("api/ticketstatus/byticket/{id}")]
         public IHttpActionResult getRelationByTicket(int id)
@@ -52,6 +52,13 @@ namespace Api.Controllers
                 return NotFound();
             }
             return Ok(relation);
+        }
+
+        //modificar relacion
+        //put: api/ticketstatus/{id_relation}
+        public void putRelation(int id, RelTicketHasStatus relation)
+        {
+            dataRelation.updateRelation(relation);
         }
     }
 }

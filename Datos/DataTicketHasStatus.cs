@@ -49,5 +49,15 @@ namespace Datos
 
             return newId;
         }
+
+        public void delteByTicketId(int id)
+        {
+            using (var db = new ToDoListContext())
+            {
+                var relation = db.REL_TICKET_HAS_STATUS.Where(r => r.id_ticket == id).First();
+                db.REL_TICKET_HAS_STATUS.Remove(relation);
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -80,5 +80,16 @@ namespace Datos
                 return tickets.ToArray();
             }
         }
+
+        //eliminar ticket
+        public void deleteTicket(int id)
+        {
+            using (var db = new ToDoListContext())
+            {
+                var ticket = db.TICKET.Where(t => t.id == id).First();
+                db.TICKET.Remove(ticket);
+                db.SaveChanges();
+            }
+        }
     }
 }

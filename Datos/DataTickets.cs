@@ -9,6 +9,7 @@ namespace Datos
 {
     public class DataTickets
     {
+        //obtener tickets normales
         public Ticket[] getAllTickets()
         {
             List<Ticket> tickets = new List<Ticket>();
@@ -32,6 +33,7 @@ namespace Datos
             }
         }
 
+        //agregar ticket
         public long addTicket(Ticket ticket)
         {
             long id=0;
@@ -54,6 +56,7 @@ namespace Datos
             return id;
         }
 
+        //obtener tickets completos
         public CompleteTicket[] getCompleteTickets()
         {
             List<CompleteTicket> tickets = new List<CompleteTicket>();
@@ -88,6 +91,17 @@ namespace Datos
             {
                 var ticket = db.TICKET.Where(t => t.id == id).First();
                 db.TICKET.Remove(ticket);
+                db.SaveChanges();
+            }
+        }
+
+        //editar ticket
+        public void updateTicket(CompleteTicket newTicket)
+        {
+            using (var db = new ToDoListContext())
+            {
+                var ticket = db.TICKET.Where(t => t.id == newTicket.Id).First();
+                ticket.description = newTicket.Description;
                 db.SaveChanges();
             }
         }

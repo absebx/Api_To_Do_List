@@ -84,12 +84,23 @@ namespace Api.Controllers
             return NotFound();
         }
 
+
+
+        //eliminar un ticket
+        //delete: api/tickets/{id}
         public void deleteTicket(int id)
         {
             //eliminar relacion primero
             dataRelations.delteByTicketId(id);
             //eliminar ticket
             dataTickets.deleteTicket(id);
+        }
+
+        //modificar ticket
+        //put: api/ticket/{id}
+        public void updateTicket(int id, CompleteTicket ticket)
+        {
+            dataTickets.updateTicket(ticket);
         }
 
     }

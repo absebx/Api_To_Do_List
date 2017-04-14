@@ -49,6 +49,7 @@ namespace Datos
 
             return newId;
         }
+        //eliminar relacion
 
         public void delteByTicketId(int id)
         {
@@ -59,5 +60,17 @@ namespace Datos
                 db.SaveChanges();
             }
         }
+
+        //modificar relacion
+        public void updateRelation(RelTicketHasStatus newRel)
+        {
+            using (var db = new ToDoListContext())
+            {
+                var relation = db.REL_TICKET_HAS_STATUS.Where(r => r.id ==newRel.Id).First();
+                relation.id_status = newRel.idStatus;
+                db.SaveChanges();
+            }
+        }
+
     }
 }
